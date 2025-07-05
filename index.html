@@ -5,129 +5,259 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Ria Garg</title>
 
-  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
 
   <style>
     /* Base Styling */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
     body {
-      font-family: 'IBM Plex Sans', sans-serif;
-      background-color: #0e0e0e;
-      color: #f5f5f5;
-      max-width: 700px;
-      margin: 60px auto;
-      padding: 0 1rem;
-      line-height: 1.6;
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem;
+      line-height: 1.7;
       position: relative;
       overflow-x: hidden;
     }
 
+    .container {
+      max-width: 600px;
+      width: 100%;
+      text-align: center;
+    }
+
     h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.25rem;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 3.5rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.02em;
+      background: linear-gradient(45deg, #ffffff, #a0a0a0);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
     }
 
     .headline {
       font-size: 1.1rem;
-      color: #555;
-      margin-bottom: 2rem;
+      color: #888;
+      margin-bottom: 3rem;
+      font-weight: 300;
+      letter-spacing: 0.02em;
     }
 
     .profile-pic {
-      width: 90px;
-      height: 90px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 1.5rem;
+      margin-bottom: 2rem;
+      border: 2px solid rgba(255, 255, 255, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .profile-pic:hover {
+      transform: scale(1.05);
     }
 
     .section {
-      margin-bottom: 2.5rem;
+      margin-bottom: 3rem;
+      text-align: left;
     }
 
     .section h2 {
-      font-size: 1.2rem;
-      margin-bottom: 0.75rem;
-      color: #333;
-      font-family: 'Courier New', monospace;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+      color: #007acc;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
     }
 
     .item {
-      margin-bottom: 0.5rem;
+      margin-bottom: 0.75rem;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    .item strong {
+      color: #ffffff;
+      font-weight: 500;
     }
 
     a {
       color: #007acc;
       text-decoration: none;
+      transition: color 0.2s ease;
+      font-weight: 400;
     }
 
     a:hover {
-      text-decoration: underline;
+      color: #00aaff;
+      text-decoration: none;
+    }
+
+    .contact {
+      text-align: center;
+      margin-top: 4rem;
     }
 
     .contact a {
       display: inline-block;
-      margin-right: 12px;
+      margin: 0 1rem;
+      padding: 0.5rem 1rem;
+      border: 1px solid rgba(0, 122, 204, 0.3);
+      border-radius: 4px;
+      transition: all 0.2s ease;
+      font-size: 0.9rem;
     }
 
-    /* Cursor Trail Styling */
+    .contact a:hover {
+      background: rgba(0, 122, 204, 0.1);
+      border-color: #007acc;
+      transform: translateY(-1px);
+    }
+
+    /* Enhanced Cursor Trail */
     .trail-dot {
       position: fixed;
-      width: 20px;
-      height: 20px;
-      background-color: rgba(255, 255, 255, 0.1);
+      width: 6px;
+      height: 6px;
+      background: linear-gradient(45deg, #007acc, #00aaff);
       border-radius: 50%;
       pointer-events: none;
       z-index: 9999;
       transform: translate(-50%, -50%);
-      animation: fadeOut 0.4s linear forwards;
+      animation: fadeOut 0.8s ease-out forwards;
+      box-shadow: 0 0 10px rgba(0, 122, 204, 0.5);
     }
 
     @keyframes fadeOut {
-      to {
-        opacity: 0;
-        transform: scale(0.5) translate(-50%, -50%);
+      0% {
+        opacity: 1;
+        transform: scale(1) translate(-50%, -50%);
       }
+      100% {
+        opacity: 0;
+        transform: scale(0.3) translate(-50%, -50%);
+      }
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+      }
+      
+      h1 {
+        font-size: 2.5rem;
+      }
+      
+      .container {
+        max-width: 100%;
+      }
+      
+      .contact a {
+        margin: 0.5rem;
+        display: block;
+      }
+    }
+
+    /* Custom cursor */
+    body {
+      cursor: none;
+    }
+
+    .custom-cursor {
+      position: fixed;
+      width: 20px;
+      height: 20px;
+      background: rgba(0, 122, 204, 0.3);
+      border: 1px solid #007acc;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 10000;
+      transform: translate(-50%, -50%);
+      transition: transform 0.1s ease;
+    }
+
+    .custom-cursor.hover {
+      transform: translate(-50%, -50%) scale(1.5);
+      background: rgba(0, 122, 204, 0.6);
     }
   </style>
 </head>
 <body>
 
-  <img src="path/to/your-picture.jpg" alt="Ria Garg" class="profile-pic" />
+  <div class="custom-cursor"></div>
 
-  <h1>Ria Garg</h1>
-  <p class="headline">CS + Bio + Math @ Stanford | AI Researcher</p>
+  <div class="container">
+    <img src="path/to/your-picture.jpg" alt="Ria Garg" class="profile-pic" />
 
-  <div class="section">
-    <h2>Upcoming</h2>
-    <p class="item">Incoming SDE Intern @ Amazon</p>
-  </div>
+    <h1>Ria Garg</h1>
+    <p class="headline">CS + Bio + Math @ Stanford | AI Researcher</p>
 
-  <div class="section">
-    <h2>Experience</h2>
-    <p class="item"><strong>MIT McGovern Institute for Brain Research</strong> – Computationally analyzed preparatory neural activity to predict physical behavior.</p>
-    <p class="item"><strong>Stanford AI Lab</strong> – Used AI to classify cancer diagnoses using gene profiles.</p>
-    <p class="item"><strong>University of North Texas Lab</strong> – Developed an ML system to screen for PTSD using behavioral and sleeping data.</p>
-    <p class="item"><strong>TreeHacks</strong> – Helped organize Stanford's largest annual hackathon.</p>
-    <p class="item"><strong>Probe</strong> – Writer for Stanford's Bioengineering and Biodesign magazine.</p>
-</div>
+    <div class="section">
+      <h2>Current</h2>
+      <p class="item">SDE Intern @ Amazon</p>
+    </div>
 
-  <div class="section contact">
-    <h2>Contact</h2>
-    <a href="mailto:gargriarg@gmail.com">Email</a>
-    <a href="https://github.com/riacode" target="_blank">GitHub</a>
-    <a href="https://linkedin.com/in/ria-garg1" target="_blank">LinkedIn</a>
+    <div class="section">
+      <h2>Experience</h2>
+      <p class="item"><strong>MIT McGovern Institute for Brain Research</strong> – Computationally analyzed preparatory neural activity to predict physical behavior.</p>
+      <p class="item"><strong>Stanford AI Lab</strong> – Used AI to classify cancer diagnoses using gene profiles.</p>
+      <p class="item"><strong>University of North Texas Lab</strong> – Developed an ML system to screen for PTSD using behavioral and sleeping data.</p>
+      <p class="item"><strong>TreeHacks</strong> – Helped organize Stanford's largest annual hackathon.</p>
+      <p class="item"><strong>Probe</strong> – Wrote for Stanford's Bioengineering and Biodesign magazine.</p>
+    </div>
+
+    <div class="section contact">
+      <h2>Contact</h2>
+      <a href="mailto:gargriarg@gmail.com">Email</a>
+      <a href="https://github.com/riacode" target="_blank">GitHub</a>
+      <a href="https://linkedin.com/in/ria-garg1" target="_blank">LinkedIn</a>
+    </div>
   </div>
 
   <script>
-    // Cursor trail logic
+    // Enhanced cursor trail logic
     document.addEventListener('mousemove', (e) => {
       const dot = document.createElement('div');
       dot.classList.add('trail-dot');
       dot.style.left = `${e.clientX}px`;
       dot.style.top = `${e.clientY}px`;
       document.body.appendChild(dot);
-      setTimeout(() => dot.remove(), 400); // match fadeOut duration
+      setTimeout(() => dot.remove(), 800);
+    });
+
+    // Custom cursor
+    const cursor = document.querySelector('.custom-cursor');
+    
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+    });
+
+    // Add hover effect for interactive elements
+    const interactiveElements = document.querySelectorAll('a, .profile-pic');
+    interactiveElements.forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.classList.add('hover');
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.classList.remove('hover');
+      });
     });
   </script>
 
