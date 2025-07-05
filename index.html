@@ -18,7 +18,7 @@
 
     body {
       font-family: 'Inter', sans-serif;
-      background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+      background: #0a0a0a;
       color: #ffffff;
       min-height: 100vh;
       display: flex;
@@ -30,6 +30,23 @@
       overflow-x: hidden;
     }
 
+    /* Subtle background pattern */
+    body::before {
+      content: '';
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: 
+        radial-gradient(circle at 25% 25%, rgba(0, 122, 204, 0.03) 0%, transparent 50%),
+        radial-gradient(circle at 75% 75%, rgba(0, 122, 204, 0.03) 0%, transparent 50%),
+        linear-gradient(45deg, transparent 48%, rgba(255, 255, 255, 0.01) 50%, transparent 52%);
+      background-size: 300px 300px, 400px 400px, 60px 60px;
+      pointer-events: none;
+      z-index: -1;
+    }
+
     .container {
       max-width: 600px;
       width: 100%;
@@ -37,19 +54,16 @@
     }
 
     h1 {
-      font-family: 'IBM Plex Mono', monospace;
-      font-size: 3.5rem;
-      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+      font-size: 2.2rem;
+      font-weight: 400;
       margin-bottom: 0.5rem;
-      letter-spacing: -0.02em;
-      background: linear-gradient(45deg, #ffffff, #a0a0a0);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
+      letter-spacing: -0.01em;
+      color: #ffffff;
     }
 
     .headline {
-      font-size: 1.1rem;
+      font-size: 1rem;
       color: #888;
       margin-bottom: 3rem;
       font-weight: 300;
@@ -57,17 +71,17 @@
     }
 
     .profile-pic {
-      width: 120px;
-      height: 120px;
+      width: 100px;
+      height: 100px;
       border-radius: 50%;
       object-fit: cover;
       margin-bottom: 2rem;
-      border: 2px solid rgba(255, 255, 255, 0.1);
+      border: 1px solid rgba(255, 255, 255, 0.1);
       transition: transform 0.3s ease;
     }
 
     .profile-pic:hover {
-      transform: scale(1.05);
+      transform: scale(1.02);
     }
 
     .section {
@@ -77,7 +91,7 @@
 
     .section h2 {
       font-family: 'IBM Plex Mono', monospace;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
       margin-bottom: 1rem;
       color: #007acc;
       font-weight: 500;
@@ -93,7 +107,7 @@
 
     .item strong {
       color: #ffffff;
-      font-weight: 500;
+      font-weight: 400;
     }
 
     a {
@@ -129,31 +143,6 @@
       transform: translateY(-1px);
     }
 
-    /* Enhanced Cursor Trail */
-    .trail-dot {
-      position: fixed;
-      width: 6px;
-      height: 6px;
-      background: linear-gradient(45deg, #007acc, #00aaff);
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      animation: fadeOut 0.8s ease-out forwards;
-      box-shadow: 0 0 10px rgba(0, 122, 204, 0.5);
-    }
-
-    @keyframes fadeOut {
-      0% {
-        opacity: 1;
-        transform: scale(1) translate(-50%, -50%);
-      }
-      100% {
-        opacity: 0;
-        transform: scale(0.3) translate(-50%, -50%);
-      }
-    }
-
     /* Responsive Design */
     @media (max-width: 768px) {
       body {
@@ -161,7 +150,7 @@
       }
       
       h1 {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
       }
       
       .container {
@@ -173,34 +162,9 @@
         display: block;
       }
     }
-
-    /* Custom cursor */
-    body {
-      cursor: none;
-    }
-
-    .custom-cursor {
-      position: fixed;
-      width: 20px;
-      height: 20px;
-      background: rgba(0, 122, 204, 0.3);
-      border: 1px solid #007acc;
-      border-radius: 50%;
-      pointer-events: none;
-      z-index: 10000;
-      transform: translate(-50%, -50%);
-      transition: transform 0.1s ease;
-    }
-
-    .custom-cursor.hover {
-      transform: translate(-50%, -50%) scale(1.5);
-      background: rgba(0, 122, 204, 0.6);
-    }
   </style>
 </head>
 <body>
-
-  <div class="custom-cursor"></div>
 
   <div class="container">
     <img src="path/to/your-picture.jpg" alt="Ria Garg" class="profile-pic" />
@@ -229,37 +193,6 @@
       <a href="https://linkedin.com/in/ria-garg1" target="_blank">LinkedIn</a>
     </div>
   </div>
-
-  <script>
-    // Enhanced cursor trail logic
-    document.addEventListener('mousemove', (e) => {
-      const dot = document.createElement('div');
-      dot.classList.add('trail-dot');
-      dot.style.left = `${e.clientX}px`;
-      dot.style.top = `${e.clientY}px`;
-      document.body.appendChild(dot);
-      setTimeout(() => dot.remove(), 800);
-    });
-
-    // Custom cursor
-    const cursor = document.querySelector('.custom-cursor');
-    
-    document.addEventListener('mousemove', (e) => {
-      cursor.style.left = e.clientX + 'px';
-      cursor.style.top = e.clientY + 'px';
-    });
-
-    // Add hover effect for interactive elements
-    const interactiveElements = document.querySelectorAll('a, .profile-pic');
-    interactiveElements.forEach(el => {
-      el.addEventListener('mouseenter', () => {
-        cursor.classList.add('hover');
-      });
-      el.addEventListener('mouseleave', () => {
-        cursor.classList.remove('hover');
-      });
-    });
-  </script>
 
 </body>
 </html>
