@@ -50,12 +50,12 @@
     .container {
       max-width: 600px;
       width: 100%;
-      text-align: center;
+      text-align: left;
     }
 
     h1 {
       font-family: 'Inter', sans-serif;
-      font-size: 2.2rem;
+      font-size: 1.8rem;
       font-weight: 400;
       margin-bottom: 0.5rem;
       letter-spacing: -0.01em;
@@ -63,7 +63,7 @@
     }
 
     .headline {
-      font-size: 1rem;
+      font-size: 0.95rem;
       color: #888;
       margin-bottom: 3rem;
       font-weight: 300;
@@ -71,17 +71,28 @@
     }
 
     .profile-pic {
-      width: 100px;
-      height: 100px;
+      width: 80px;
+      height: 80px;
       border-radius: 50%;
       object-fit: cover;
-      margin-bottom: 2rem;
+      margin-bottom: 1.5rem;
+      margin-right: 1.5rem;
       border: 1px solid rgba(255, 255, 255, 0.1);
       transition: transform 0.3s ease;
+      float: left;
     }
 
     .profile-pic:hover {
       transform: scale(1.02);
+    }
+
+    .header-section {
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+
+    .name-section {
+      padding-top: 0.5rem;
     }
 
     .section {
@@ -167,10 +178,13 @@
 <body>
 
   <div class="container">
-    <img src="path/to/your-picture.jpg" alt="Ria Garg" class="profile-pic" />
-
-    <h1>Ria Garg</h1>
-    <p class="headline">CS + Bio + Math @ Stanford | AI Researcher</p>
+    <div class="header-section">
+      <img src="path/to/your-picture.jpg" alt="Ria Garg" class="profile-pic" />
+      <div class="name-section">
+        <h1>Ria Garg</h1>
+        <p class="headline">CS + Bio + Math @ Stanford | AI Researcher</p>
+      </div>
+    </div>
 
     <div class="section">
       <h2>Current</h2>
